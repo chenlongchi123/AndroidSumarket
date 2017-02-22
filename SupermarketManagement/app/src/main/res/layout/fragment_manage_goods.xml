@@ -1,0 +1,28 @@
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.chen.supermarketmanagement.ManageGoodsFragment"
+    android:background="@drawable/main">
+
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <Button
+            android:text="添加貨物"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/btnAdd"
+            android:background="@android:color/holo_blue_bright" />
+
+        <Button
+            android:text="查看貨物"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/btnSelect"
+            android:background="@android:color/holo_blue_dark" />
+    </LinearLayout>
+</FrameLayout>

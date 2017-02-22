@@ -1,0 +1,12 @@
+<resources>
+    <string name="app_name">货物管理</string>
+    <string name="network_check">当前网络不可用</string>
+    <string-array name="contact_type">
+        <item value="日用百货" id="0">日用百货</item>
+        <item value="电子产品" id="1">电子产品</item>
+        <item value="床上用品" id="2">床上用品</item>
+    </string-array>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+</resources>
