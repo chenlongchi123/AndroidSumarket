@@ -8,6 +8,13 @@ public class Goods {
     private String description;
     private String type;
     private String imgurl;
+    private String odate;
+    public String getOdate() {
+        return odate;
+    }
+    public void setOdate(String odate) {
+        this.odate = odate;
+    }
     public String getDescription() {
         return description;
     }

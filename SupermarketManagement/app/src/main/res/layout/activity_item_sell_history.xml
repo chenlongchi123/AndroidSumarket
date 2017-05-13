@@ -28,14 +28,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textAppearance="?android:attr/textAppearanceSmall"
-            android:text="数量：15"
-            android:id="@+id/tvNum" />
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textAppearance="?android:attr/textAppearanceSmall"
-            android:text="Id：15"
-            android:id="@+id/tvId" />
+            android:text="日期：2016-9-25 周日"
+            android:id="@+id/tvOdate" />
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -45,11 +39,4 @@
 
     </LinearLayout>
 
-    <ImageView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/btnCheck"
-        android:layout_weight="0.1"
-        android:layout_marginTop="15dp"
-        android:background="@android:drawable/ic_media_play" />
 </LinearLayout>

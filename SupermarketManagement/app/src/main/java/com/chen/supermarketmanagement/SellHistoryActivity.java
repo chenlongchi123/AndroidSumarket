@@ -1,9 +1,7 @@
 package com.chen.supermarketmanagement;
 
 import android.app.ProgressDialog;
-import android.content.Context;
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.os.Handler;
 import android.os.Message;
 import android.support.v7.app.AppCompatActivity;
@@ -18,19 +16,14 @@ import android.widget.Toast;
 import com.chen.supermarketmanagement.bean.Goods;
 import com.chen.supermarketmanagement.utils.CONSTANT;
 import com.chen.supermarketmanagement.utils.NetUtils;
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
 import com.google.gson.JsonSyntaxException;
 
 import org.apache.http.HttpEntity;
 import org.apache.http.HttpResponse;
 import org.apache.http.client.ClientProtocolException;
-import org.apache.http.client.entity.UrlEncodedFormEntity;
 import org.apache.http.client.methods.HttpPost;
 import org.apache.http.impl.client.DefaultHttpClient;
-import org.apache.http.message.BasicHeader;
 import org.apache.http.params.CoreConnectionPNames;
-import org.apache.http.util.EntityUtils;
 import org.xmlpull.v1.XmlPullParser;
 import org.xmlpull.v1.XmlPullParserFactory;
 
@@ -43,17 +36,18 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public class SelectGoodsActivity extends AppCompatActivity {
+public class SellHistoryActivity extends AppCompatActivity {
+
     SimpleAdapter adapter = null;
-    ListView lvSelectGoods=null;
+    ListView lvSellHistory=null;
     ProgressDialog pDialog = null;
     List<Map<String, Object>> data = null;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_select_goods);
-        lvSelectGoods=(ListView)findViewById(R.id.lvSelectGoods);
+        setContentView(R.layout.activity_sell_history);
+        lvSellHistory=(ListView)findViewById(R.id.lvSellHistory);
         // 数据
         data = new ArrayList<Map<String, Object>>();
 
@@ -63,46 +57,32 @@ public class SelectGoodsActivity extends AppCompatActivity {
         // resource: 每一行的布局方式
         // from: Map中的key
         // to: 布局中的组件id
-        adapter = new SimpleAdapter(this, data, R.layout.activity_item_select_goods,
-                new String[] { "name", "price", "num", "id","type"}, new int[] {R.id.tvName, R.id.tvPrice, R.id.tvNum,R.id.tvId,R.id.tvType });
+        adapter = new SimpleAdapter(this, data, R.layout.activity_item_sell_history,
+                new String[] { "name", "price", "odate","type"}, new int[] {R.id.tvName, R.id.tvPrice, R.id.tvOdate,R.id.tvType });
         // 绑定
-        lvSelectGoods.setAdapter(adapter);
-        // 事件处理
-        lvSelectGoods.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+        lvSellHistory.setAdapter(adapter);
 
-            @Override
-            public void onItemClick(AdapterView<?> parent, View view,
-                                    int position, long id) {
-                // TODO Auto-generated method stub
-                Intent intent = new Intent(SelectGoodsActivity.this,
-                        EditGoodsActivity.class);
-                // 传递数据
-                intent.putExtra("row", (Serializable) data.get(position)); // Map
-                startActivity(intent);
-            }
-        });
     }
     @Override
     protected void onResume() {
         // TODO Auto-generated method stub
         super.onResume();
-        if (!NetUtils.check(SelectGoodsActivity.this)) {
-            Toast.makeText(SelectGoodsActivity.this,
+        if (!NetUtils.check(SellHistoryActivity.this)) {
+            Toast.makeText(SellHistoryActivity.this,
                     getString(R.string.network_check), Toast.LENGTH_SHORT)
                     .show();
             return; // 后续代码不执行
         }
 
         // 进度对话框
-        pDialog=ProgressDialog.show(SelectGoodsActivity.this,null,"正在连接...",false,true);
+        pDialog=ProgressDialog.show(SellHistoryActivity.this,null,"正在连接...",false,true);
 
         new Thread() {
             public void run() {
                 // 获取message
                 Message msg = handler.obtainMessage();
 
-                HttpPost post = new HttpPost(CONSTANT.HOST
-                        + "/ListServlet");
+                HttpPost post = new HttpPost(CONSTANT.HOST + "/SellHistoryServlet");
                 // 发送请求
                 DefaultHttpClient client = new DefaultHttpClient();
                 try {
@@ -132,7 +112,6 @@ public class SelectGoodsActivity extends AppCompatActivity {
                             pullParser.setInput(inputStream, "UTF-8");
                             //开始
                             int eventType=pullParser.getEventType();
-
                             while(eventType!=XmlPullParser.END_DOCUMENT){
                                 String nodeName=pullParser.getName();
                                 switch (eventType) {
@@ -150,12 +129,10 @@ public class SelectGoodsActivity extends AppCompatActivity {
                                             goods.setName(pullParser.nextText());
                                         }else if("price".equals(nodeName)){
                                             goods.setPrice(Double.parseDouble(pullParser.nextText().trim()));
-                                        }else if(nodeName!= null &&"pnum".equals(nodeName)){
-                                            goods.setPnum(Integer.parseInt(pullParser.nextText().trim()));
+                                        }else if("odate".equals(nodeName)){
+                                            goods.setOdate(pullParser.nextText());
                                         }else if("type".equals(nodeName)){
                                             goods.setType(pullParser.nextText());
-                                        }else if("description".equals(nodeName)){
-                                            goods.setDescription(pullParser.nextText());
                                         }
                                         break;
                                     //结束节点
@@ -232,9 +209,8 @@ public class SelectGoodsActivity extends AppCompatActivity {
                         Map<String, Object> row = new HashMap<String, Object>();
                         row.put("name",  "货物名称:"+goods1.getName());
                         row.put("price", "价格:"+goods1.getPrice() );
-                        row.put("num", "数量:"+goods1.getPnum() );
+                        row.put("odate", "日期:"+goods1.getOdate() );
                         row.put("type", "类型:"+goods1.getType() );
-                        row.put("description","描述:"+goods1.getDescription());
                         row.put("id","id:"+goods1.getId());
                         data.add(row);
                     }
@@ -242,11 +218,11 @@ public class SelectGoodsActivity extends AppCompatActivity {
 
                     break;
                 case 2:
-                    Toast.makeText(SelectGoodsActivity.this, "服务器错误，请重试",
+                    Toast.makeText(SellHistoryActivity.this, "服务器错误，请重试",
                             Toast.LENGTH_SHORT).show();
                     break;
                 case 3:
-                    Toast.makeText(SelectGoodsActivity.this, "请重新登录",
+                    Toast.makeText(SellHistoryActivity.this, "请重新登录",
                             Toast.LENGTH_SHORT).show();
                     break;
             }

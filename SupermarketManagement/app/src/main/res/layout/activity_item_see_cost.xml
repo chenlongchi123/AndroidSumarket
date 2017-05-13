@@ -14,42 +14,29 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textAppearance="?android:attr/textAppearanceLarge"
-            android:id="@+id/tvName"
-            android:text="货物名称" />
+            android:id="@+id/tvCsprice"
+            android:text="总收入金额：" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textAppearance="?android:attr/textAppearanceSmall"
-            android:text="价格：1234"
-            android:id="@+id/tvPrice" />
+            android:text="出售货物总进价："
+            android:id="@+id/tvJjprice" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textAppearance="?android:attr/textAppearanceSmall"
-            android:text="数量：15"
-            android:id="@+id/tvNum" />
+            android:text="其他总支出："
+            android:id="@+id/tvHfprice" />
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textAppearance="?android:attr/textAppearanceSmall"
-            android:text="Id：15"
-            android:id="@+id/tvId" />
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textAppearance="?android:attr/textAppearanceSmall"
-            android:text="货物类型：日用百货"
-            android:id="@+id/tvType" />
+            android:text="盈利"
+            android:id="@+id/tvProfit" />
 
     </LinearLayout>
 
-    <ImageView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/btnCheck"
-        android:layout_weight="0.1"
-        android:layout_marginTop="15dp"
-        android:background="@android:drawable/ic_media_play" />
 </LinearLayout>

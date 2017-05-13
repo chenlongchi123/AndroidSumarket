@@ -12,7 +12,13 @@ public class User {
     private String selectc;
     private String birthday;
     private String postal;
-
+    private String status;
+    public String getStatus() {
+        return status;
+    }
+    public void setStatus(String status) {
+        this.status = status;
+    }
     public String getSex() {
         return sex;
     }

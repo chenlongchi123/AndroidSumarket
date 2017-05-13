@@ -1,14 +1,68 @@
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     tools:context="com.chen.supermarketmanagement.MyFragment"
-    android:background="@drawable/main">
+    android:background="@drawable/main"
+    android:weightSum="1">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="0.29">
+
+        <TextView
+            android:text="用户名："
+            android:layout_width="185dp"
+            android:layout_height="match_parent"
+            android:id="@+id/tvName"
+            android:textSize="36sp"
+            android:textColor="@color/colorAccent" />
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:inputType="textPersonName"
+            android:text="Name"
+            android:ems="10"
+            android:id="@+id/tvName1"
+            android:layout_weight="1"
+            android:textSize="36sp"
+            android:textColor="@color/colorPrimary" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="0.35">
+        <TextView
+        android:text="密码："
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+            android:layout_weight="2"
+        android:id="@+id/tvSex"
+            android:textSize="36sp"
+            android:textColor="@color/colorAccent" />
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:inputType="textPersonName"
+            android:text="Name"
+            android:ems="10"
+            android:id="@+id/tvPassword"
+            android:layout_weight="1"
+            android:textSize="36sp"
+            android:textColor="@color/colorPrimary" />
+    </LinearLayout>
 
-</FrameLayout>
+    <Button
+        android:text="退出登陆"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/btnExit"
+        android:background="@drawable/cab_background_top_mainbar" />
+
+</LinearLayout>

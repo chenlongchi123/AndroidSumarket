@@ -6,14 +6,17 @@ import android.os.Handler;
 import android.os.Message;
 import android.support.v7.app.AppCompatActivity;
 
+import android.text.Html;
 import android.text.TextUtils;
 
+import android.text.method.LinkMovementMethod;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
 
+import android.widget.TextView;
 import android.widget.Toast;
 
 
@@ -47,6 +50,7 @@ public class LoginActivity extends AppCompatActivity {
     EditText etAccount;
     EditText etPassword;
     CheckBox ckBox;
+    TextView tvRegister;
     ProgressDialog pDialog=null;
 
 
@@ -88,11 +92,14 @@ public class LoginActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
         btnLogin=(Button)findViewById(R.id.Login);
-
+        tvRegister=(TextView) findViewById(R.id.tvRegister);
         etAccount=(EditText) findViewById(R.id.etAccount);
         etPassword=(EditText) findViewById(R.id.etPassword1);
         ckBox=(CheckBox)findViewById(R.id.ckBox);
+//忘记密码链接
 
+        tvRegister.setText(Html.fromHtml("<a href=\"http://16593r4j74.imwork.net:31959/SupermarketManagement\">注册账号？</a>"));
+        tvRegister.setMovementMethod(LinkMovementMethod.getInstance());
         //绑定监听器
         btnLogin.setOnClickListener(new View.OnClickListener() {
             @Override

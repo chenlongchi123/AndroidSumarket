@@ -1,6 +1,8 @@
 apply plugin: 'com.android.application'
 
 android {
+    signingConfigs {
+    }
     compileSdkVersion 25
     buildToolsVersion "25.0.2"
     defaultConfig {
@@ -16,6 +18,15 @@ android {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
+        debug {
+        }
+    }
+    sourceSets {
+        main {
+            jniLibs.srcDirs = ['libs']
+        }
+    }
+    productFlavors {
     }
 }
 
@@ -30,4 +41,5 @@ dependencies {
     compile 'com.google.code.gson:gson-parent:2.8.0'
     compile 'com.android.support:support-v4:25.1.1'
     testCompile 'junit:junit:4.12'
+    compile files('libs/BaiduLBS_Android.jar')
 }
