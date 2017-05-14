@@ -4,7 +4,6 @@ import android.content.Intent;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentTransaction;
 import android.support.v4.view.ViewPager;
 import android.os.Bundle;
 import android.util.Log;
@@ -106,11 +105,13 @@ public class MainActivity extends FragmentActivity {
     private void InitFragment(){
         fragmentArrayList = new ArrayList<Fragment>();
         Log.v("hehe",user.getStatus());
-        if(user.getStatus().equals("1")){
+        if(user.getStatus().trim().equals("a")){
             fragmentArrayList.add(new ManageGoodsFragment());
+            Log.v("hehe","11111111111111111111111");
         }else {
             fragmentArrayList.add(new ManageGoods2Fragment());
         }
+
         fragmentArrayList.add(new MyFragment());
 
         fragmentManager = getSupportFragmentManager();

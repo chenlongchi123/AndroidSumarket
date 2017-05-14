@@ -61,9 +61,9 @@ public class MyFragment extends Fragment {
         btnExit=(Button)getActivity().findViewById(R.id.btnExit);
         tvName1=(TextView)getActivity().findViewById(R.id.tvName1);
         tvPassword=(TextView)getActivity().findViewById(R.id.tvPassword);
-        SharedPreferences read = getActivity().getSharedPreferences("user", Context.MODE_PRIVATE);
-        String name = read.getString("username", "");
-        String pwd = read.getString("password", "");
+        SharedPreferences read = getActivity().getSharedPreferences("user2", Context.MODE_PRIVATE);
+        String name = read.getString("username1", "");
+        String pwd = read.getString("password1", "");
         tvName1.setText(name.toString());
         tvPassword.setText(pwd.toString());
         btnExit.setOnClickListener(new View.OnClickListener() {

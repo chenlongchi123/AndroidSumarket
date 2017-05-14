@@ -83,18 +83,18 @@ public class LoginActivity extends AppCompatActivity {
                         etAccount.setError("用户名或密码错误");
                         etAccount.requestFocus();
                     }else {
-                        SharedPreferences pref=getSharedPreferences("user", Context.MODE_PRIVATE);
+                        SharedPreferences pref=getSharedPreferences("user2", Context.MODE_PRIVATE);
                         SharedPreferences.Editor editor=pref.edit();
                         //记录jessionid
                         //记录用户名或密码
                         if (ckBox.isChecked()){
-                            editor.putString("username",etAccount.getText().toString());
-                            editor.putString("password",etPassword.getText().toString());
+                            editor.putString("username1",etAccount.getText().toString());
+                            editor.putString("password1",etPassword.getText().toString());
                         }
                         else{
                             //清空以前的登录信息
-                            editor.remove("username");
-                            editor.remove("password");
+                            editor.remove("username1");
+                            editor.remove("password1");
                         }
                         editor.commit();//最后要提交
                         data = new ArrayList<Map<String, Object>>();
