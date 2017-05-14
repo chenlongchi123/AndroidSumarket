@@ -1,6 +1,8 @@
 package com.chen.supermarketmanagement;
 import android.app.ProgressDialog;
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
@@ -20,6 +22,9 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 
+import com.chen.supermarketmanagement.bean.Goods;
+import com.chen.supermarketmanagement.bean.Othercost;
+import com.chen.supermarketmanagement.bean.User;
 import com.chen.supermarketmanagement.utils.CONSTANT;
 import com.chen.supermarketmanagement.utils.NetUtils;
 
@@ -33,15 +38,22 @@ import org.apache.http.client.methods.HttpPost;
 import org.apache.http.impl.client.DefaultHttpClient;
 import org.apache.http.message.BasicNameValuePair;
 import org.apache.http.params.CoreConnectionPNames;
+import org.xmlpull.v1.XmlPullParser;
+import org.xmlpull.v1.XmlPullParserFactory;
 
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.io.Serializable;
 import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
+
+import static android.R.attr.data;
 
 
 public class LoginActivity extends AppCompatActivity {
@@ -52,6 +64,7 @@ public class LoginActivity extends AppCompatActivity {
     CheckBox ckBox;
     TextView tvRegister;
     ProgressDialog pDialog=null;
+    List<Map<String, Object>> data = null;
 
 
     Handler handler=new Handler(){
@@ -70,9 +83,36 @@ public class LoginActivity extends AppCompatActivity {
                         etAccount.setError("用户名或密码错误");
                         etAccount.requestFocus();
                     }else {
-
-                        Intent intent=new Intent();
-                        intent.setClass(LoginActivity.this,MainActivity.class);
+                        SharedPreferences pref=getSharedPreferences("user", Context.MODE_PRIVATE);
+                        SharedPreferences.Editor editor=pref.edit();
+                        //记录jessionid
+                        //记录用户名或密码
+                        if (ckBox.isChecked()){
+                            editor.putString("username",etAccount.getText().toString());
+                            editor.putString("password",etPassword.getText().toString());
+                        }
+                        else{
+                            //清空以前的登录信息
+                            editor.remove("username");
+                            editor.remove("password");
+                        }
+                        editor.commit();//最后要提交
+                        data = new ArrayList<Map<String, Object>>();
+                        data.clear();
+                        List<User> lists=(List<User>) msg.obj;
+                        for(int i=0;i<lists.size();i++) {
+                            User user1 = lists.get(i);
+                            Map<String, Object> row = new HashMap<String, Object>();
+                            row.put("name", "用户名:" + user1.getName());
+                            row.put("password", "密码:" + user1.getPassword());
+                            row.put("email", "邮箱:" + user1.getEmail());
+                            row.put("status", "权限:" + user1.getStatus());
+                            row.put("id", "id:" + user1.getId());
+                            data.add(row);
+                        }
+                        Intent intent=new Intent(LoginActivity.this,MainActivity.class);
+                        // 传递数据
+                        intent.putExtra("row",(Serializable) data.get(0)); // Map
                         startActivity(intent);
                         //关闭
                         LoginActivity.this.finish();
@@ -148,7 +188,7 @@ public class LoginActivity extends AppCompatActivity {
                                 if(response.getStatusLine().getStatusCode()==200){
                                     Log.v("hehe","ok");
 
-                                    //解析数据
+                             /*       //解析数据
                                     StringBuilder builder = new StringBuilder();
                                     HttpEntity httpEntity = response.getEntity();//得到一个http实体
                                     InputStream inputStream = httpEntity.getContent();//得到内容
@@ -166,7 +206,65 @@ public class LoginActivity extends AppCompatActivity {
                                            msg.what=1;
                                            msg.arg1=1;
                                        }
+                                    }*/
+                                    List<User> lists=null;
+                                    User user=null;
+                                    try {
+
+                                        XmlPullParserFactory factory=XmlPullParserFactory.newInstance();
+                                        //获取XmlPullParser实例
+                                        XmlPullParser pullParser=factory.newPullParser();
+                                        HttpEntity httpEntity = response.getEntity();//得到一个http实体
+                                        InputStream inputStream = httpEntity.getContent();//得到内容
+                                        pullParser.setInput(inputStream, "UTF-8");
+                                        //开始
+                                        int eventType=pullParser.getEventType();
+                                        while(eventType!=XmlPullParser.END_DOCUMENT){
+                                            String nodeName=pullParser.getName();
+                                            switch (eventType) {
+                                                //文档开始
+                                                case XmlPullParser.START_DOCUMENT:
+                                                    lists=new ArrayList<User>();
+                                                    break;
+
+                                                //开始节点
+                                                case XmlPullParser.START_TAG:
+                                                    if("user".equals(nodeName)){
+                                                        user=new User();
+                                                        user.setId(Integer.parseInt(pullParser.getAttributeValue(0)));
+                                                    }else if("name".equals(nodeName)){
+                                                        user.setName(pullParser.nextText());
+                                                    }else if("password".equals(nodeName)){
+                                                        user.setPassword(pullParser.nextText());
+                                                    }else if("email".equals(nodeName)){
+                                                        user.setEmail(pullParser.nextText());
+                                                    }else if("status".equals(nodeName)){
+                                                        user.setStatus(pullParser.nextText());
+                                                    }
+                                                    break;
+                                                //结束节点
+                                                case XmlPullParser.END_TAG:
+                                                    if("user".equals(nodeName)){
+                                                        lists.add(user);
+                                                        user=null;
+                                                    }
+                                                    break;
+                                                default:
+                                                    break;
+                                            }
+                                            // 手动的触发下一个事件
+                                            eventType=pullParser.next();
+                                        }
+                                    } catch (Exception e) {
+                                        // TODO Auto-generated catch block
+                                        e.printStackTrace();
+                                        msg.arg1=0;
                                     }
+
+                                    // 发送消息
+                                    msg.arg1=1;
+                                    msg.obj = lists;
+                                    msg.what = 1;
                                 }else {
                                     msg.what=2;
                                 }

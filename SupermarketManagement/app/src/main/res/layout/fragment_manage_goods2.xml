@@ -1,0 +1,46 @@
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.chen.supermarketmanagement.ManageGoodsFragment"
+    android:background="@drawable/main">
+
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <Button
+            android:text="出售貨物"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/btnSell"
+            android:background="@android:color/holo_blue_dark"
+            android:layout_weight="1"/>
+        <Button
+            android:text="查看貨物"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/btnSelect"
+            android:background="@android:color/holo_blue_bright"
+            android:layout_weight="1"/>
+        <Button
+            android:text="查看出售貨物记录"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/btnSellHistory"
+            android:background="@android:color/holo_blue_dark"
+            android:layout_weight="1"/>
+
+
+        <Button
+            android:text="百度地图"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/btnMymap"
+            android:background="@android:color/holo_blue_bright"
+            android:layout_weight="1"/>
+
+    </LinearLayout>
+</FrameLayout>

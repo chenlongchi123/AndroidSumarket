@@ -1,19 +1,28 @@
 package com.chen.supermarketmanagement;
 
+import android.content.Intent;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v4.view.ViewPager;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
+
+import com.chen.supermarketmanagement.bean.User;
+
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 
 
 public class MainActivity extends FragmentActivity {
     ViewPager pager = null;
     TextView tvTicket = null;
     TextView tvMy = null;
+    User user=new User();
     //存放Fragment
     private ArrayList<Fragment> fragmentArrayList;
     //管理Fragment
@@ -23,6 +32,18 @@ public class MainActivity extends FragmentActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        Intent intent=getIntent();
+        Map<String,Object> good=(HashMap<String,Object>)intent.getSerializableExtra("row");
+        String name=(String)good.get("name");
+        String password=(String)good.get("password");
+        String email=(String)good.get("email");
+        String status=(String)good.get("status");
+        String id=(String)good.get("id");
+        user.setId(Integer.parseInt(id.split(":")[1]));
+        user.setEmail(email.split(":")[1]);
+        user.setName(name.split(":")[1]);
+        user.setPassword(password.split(":")[1]);
+        user.setStatus(status.split(":")[1]);
         bindViews();
         InitFragment();
 //        //导航条
@@ -84,7 +105,12 @@ public class MainActivity extends FragmentActivity {
      */
     private void InitFragment(){
         fragmentArrayList = new ArrayList<Fragment>();
-        fragmentArrayList.add(new ManageGoodsFragment());
+        Log.v("hehe",user.getStatus());
+        if(user.getStatus().equals("1")){
+            fragmentArrayList.add(new ManageGoodsFragment());
+        }else {
+            fragmentArrayList.add(new ManageGoods2Fragment());
+        }
         fragmentArrayList.add(new MyFragment());
 
         fragmentManager = getSupportFragmentManager();
