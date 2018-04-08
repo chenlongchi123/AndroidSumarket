@@ -50,7 +50,9 @@ public class SellGoodsActivity extends AppCompatActivity {
         setContentView(R.layout.activity_sell_goods);
         start_time = (TextView)findViewById(R.id.start_time);
         btnSellGoods=(Button)findViewById(R.id.btnSellGoods);
+        btnSellGoods.getBackground().setAlpha(230);//0~255透明度值
         etId=(EditText)findViewById(R.id.etId);
+        etId.getBackground().setAlpha(100);//0~255透明度值
         //获取当前日期
         Date now = new Date();
         SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");

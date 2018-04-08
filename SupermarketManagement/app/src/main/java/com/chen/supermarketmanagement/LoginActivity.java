@@ -138,7 +138,7 @@ public class LoginActivity extends AppCompatActivity {
         ckBox=(CheckBox)findViewById(R.id.ckBox);
 //忘记密码链接
 
-        tvRegister.setText(Html.fromHtml("<a href=\"http://16593r4j74.imwork.net:31959/SupermarketManagement\">注册账号？</a>"));
+        tvRegister.setText(Html.fromHtml("<a href=\"http://16593r4j74.imwork.net:29357/SupermarketManagement/register.jsp\">注册账号？</a>"));
         tvRegister.setMovementMethod(LinkMovementMethod.getInstance());
         //绑定监听器
         btnLogin.setOnClickListener(new View.OnClickListener() {

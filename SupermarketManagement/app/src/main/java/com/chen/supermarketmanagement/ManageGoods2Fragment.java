@@ -12,9 +12,10 @@ import android.widget.Button;
 public class ManageGoods2Fragment extends Fragment {
 
     Button btnSelect;
-    Button btnMymap;
+
     Button btnSell;
     Button btnSellHistory;
+    Button btnGetAllLess;
     public ManageGoods2Fragment() {
 
     }
@@ -30,9 +31,10 @@ public class ManageGoods2Fragment extends Fragment {
         // TODO Auto-generated method stub
         super.onActivityCreated(savedInstanceState);
         btnSelect=(Button)getActivity().findViewById(R.id.btnSelect);
-        btnMymap=(Button)getActivity().findViewById(R.id.btnMymap);
+
         btnSell=(Button)getActivity().findViewById(R.id.btnSell);
         btnSellHistory=(Button)getActivity().findViewById(R.id.btnSellHistory);
+        btnGetAllLess=(Button)getActivity().findViewById(R.id.btnGetAllLess);
 
         btnSelect.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -42,14 +44,7 @@ public class ManageGoods2Fragment extends Fragment {
                 startActivity(intent);
             }
         });
-        btnMymap.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent=new Intent();
-                intent.setClass(getActivity(), MyMapActivity.class);
-                startActivity(intent);
-            }
-        });
+
         btnSell.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -64,6 +59,14 @@ public class ManageGoods2Fragment extends Fragment {
             public void onClick(View v) {
                 Intent intent=new Intent();
                 intent.setClass(getActivity(), SellHistoryActivity.class);
+                startActivity(intent);
+            }
+        });
+        btnGetAllLess.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent=new Intent();
+                intent.setClass(getActivity(), GetAllLessActivity.class);
                 startActivity(intent);
             }
         });

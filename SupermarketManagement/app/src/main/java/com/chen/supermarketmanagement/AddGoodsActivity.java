@@ -39,6 +39,7 @@ import java.util.List;
 public class AddGoodsActivity extends AppCompatActivity {
     EditText etName;
     EditText etPrice;
+    EditText etPrice2;
     EditText etPnum;
     EditText etDescription;
     Button btnAddGoods;
@@ -50,11 +51,19 @@ public class AddGoodsActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_goods);
         etName=(EditText)findViewById(R.id.etName);
+        etName.getBackground().setAlpha(100);//0~255透明度值
         etPrice=(EditText)findViewById(R.id.etPrice);
+        etPrice.getBackground().setAlpha(100);//0~255透明度值
+        etPrice2=(EditText)findViewById(R.id.etPrice2);
+        etPrice2.getBackground().setAlpha(100);//0~255透明度值
         etPnum=(EditText)findViewById(R.id.etPnum);
+        etPnum.getBackground().setAlpha(100);//0~255透明度值
         etDescription=(EditText)findViewById(R.id.etDescription);
+        etDescription.getBackground().setAlpha(100);//0~255透明度值
         btnAddGoods=(Button) findViewById(R.id.btnAddGoods);
+        btnAddGoods.getBackground().setAlpha(230);//0~255透明度值
         spType=(Spinner) findViewById(R.id.spType);
+        spType.getBackground().setAlpha(200);//0~255透明度值
         viewInit();
     }
     void viewInit() {
@@ -109,6 +118,7 @@ public class AddGoodsActivity extends AppCompatActivity {
                 params.add(new BasicNameValuePair("pnum",etPnum.getText().toString() ));
                 params.add(new BasicNameValuePair("type", spType.getSelectedItem().toString()));
                 params.add(new BasicNameValuePair("description", etDescription.getText().toString()));
+                params.add(new BasicNameValuePair("price2", etPrice2.getText().toString()));
                 params.add(new BasicNameValuePair("action", action));
 
                 UrlEncodedFormEntity entity = new UrlEncodedFormEntity(params, "UTF-8");

@@ -3,73 +3,98 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="com.chen.supermarketmanagement.ManageGoodsFragment"
-    android:background="@drawable/main">
+    android:background="@drawable/zengjia">
 
 
     <LinearLayout
         android:orientation="vertical"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="1">
+        <Button
+            android:text="添加貨物"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:id="@+id/btnAdd"
+            android:background="@color/colorPrimary"
+            android:layout_weight="1"/>
 
         <Button
             android:text="出售貨物"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:id="@+id/btnSell"
-            android:background="@android:color/holo_blue_dark"
+            android:background="@color/colorAccent"
             android:layout_weight="1"/>
+    </LinearLayout>
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1">
+           <Button
+                android:text="查看貨物"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:id="@+id/btnSelect"
+                android:background="@color/colorAccent"
+                android:layout_weight="1"/>
+            <Button
+                android:text="查看缺货货物"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:id="@+id/btnGetAllLess"
+                android:background="@color/colorPrimary"
+                android:layout_weight="1"/>
+        </LinearLayout>
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1">
+            <Button
+                android:text="查看出售貨物记录"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:id="@+id/btnSellHistory"
+                android:background="@color/colorPrimary"
+                android:layout_weight="1"/>
+            <Button
+                android:text="其他支出"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:id="@+id/btnOther"
+                android:background="@color/colorAccent"
+                android:layout_weight="1"/>
+        </LinearLayout>
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1">
 
-        <Button
-            android:text="添加貨物"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/btnAdd"
-            android:background="@android:color/holo_blue_bright"
-            android:layout_weight="1"/>
+            <Button
+                android:text="查看账单"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:id="@+id/btnSeeCost"
+                android:background="@color/colorAccent"
+                android:layout_weight="1"/>
+            <Button
+                android:text="查看其他支出"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:id="@+id/btnSeeOther"
+                android:background="@color/colorPrimary"
+                android:layout_weight="1"/>
 
-        <Button
-            android:text="查看貨物"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/btnSelect"
-            android:background="@android:color/holo_blue_dark"
-            android:layout_weight="1"/>
-        <Button
-            android:text="查看出售貨物记录"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/btnSellHistory"
-            android:background="@android:color/holo_blue_bright"
-            android:layout_weight="1"/>
-        <Button
-            android:text="其他支出"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/btnOther"
-            android:background="@android:color/holo_blue_dark"
-            android:layout_weight="1"/>
-        <Button
-            android:text="查看其他支出"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/btnSeeOther"
-            android:background="@android:color/holo_blue_bright"
-            android:layout_weight="1"/>
+        </LinearLayout>
 
-        <Button
-            android:text="查看账单"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/btnSeeCost"
-            android:background="@android:color/holo_blue_dark"
-            android:layout_weight="1"/>
-        <Button
-            android:text="百度地图"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/btnMymap"
-            android:background="@android:color/holo_blue_bright"
-            android:layout_weight="1"/>
+
 
     </LinearLayout>
 </FrameLayout>

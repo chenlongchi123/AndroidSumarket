@@ -40,6 +40,7 @@ import static android.R.attr.data;
 public class EditGoodsActivity extends AppCompatActivity {
     EditText etName;
     EditText etPrice;
+    EditText etPrice2;
     EditText etPnum;
     EditText etDescription;
     Button btnEditGoods;
@@ -53,16 +54,26 @@ public class EditGoodsActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_edit_goods);
         etName=(EditText)findViewById(R.id.etName);
+        etName.getBackground().setAlpha(100);//0~255透明度值
         etPrice=(EditText)findViewById(R.id.etPrice);
+        etPrice.getBackground().setAlpha(100);//0~255透明度值
+        etPrice2=(EditText)findViewById(R.id.etPrice2);
+        etPrice2.getBackground().setAlpha(100);//0~255透明度值
         etPnum=(EditText)findViewById(R.id.etPnum);
+        etPnum.getBackground().setAlpha(100);//0~255透明度值
         etDescription=(EditText)findViewById(R.id.etDescription);
+        etDescription.getBackground().setAlpha(100);//0~255透明度值
         btnEditGoods=(Button) findViewById(R.id.btnEditGoods);
+        btnEditGoods.getBackground().setAlpha(230);//0~255透明度值
         btnDeleteGoods=(Button) findViewById(R.id.btnDeleteGoods);
+        btnDeleteGoods.getBackground().setAlpha(230);//0~255透明度值
         spType=(Spinner) findViewById(R.id.spType);
+        spType.getBackground().setAlpha(200);//0~255透明度值
         Intent intent=getIntent();
         Map<String,Object> good=(Map<String,Object>)intent.getSerializableExtra("row");
         String name=(String)good.get("name");
         String price=(String)good.get("price");
+        String price2=(String)good.get("price2");
         String num=(String)good.get("num");
         String type=(String)good.get("type");
         String description=(String)good.get("description");
@@ -70,6 +81,7 @@ public class EditGoodsActivity extends AppCompatActivity {
         goods.setId(Integer.parseInt(id.split(":")[1]));
         etName.setText(name.split(":")[1]);
         etPrice.setText(price.split(":")[1]);
+        etPrice2.setText(price2.split(":")[1]);
         etPnum.setText(num.split(":")[1]);
         int i=0;
         if("日用百货".equals(type.split(":")[1])){

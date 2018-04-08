@@ -5,7 +5,7 @@ package com.chen.supermarketmanagement.utils;
  */
 
 public interface CONSTANT {
-    String HOST="http://16593r4j74.imwork.net:31959/SupermarketManagement";
+    String HOST="http://16593r4j74.imwork.net:29357/SupermarketManagement";
     int REQUEST_TIMEOUT = 3000;
     int SO_TIMEOUT = 3000;
 }

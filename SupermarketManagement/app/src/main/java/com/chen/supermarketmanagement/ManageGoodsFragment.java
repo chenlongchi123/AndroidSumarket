@@ -12,12 +12,13 @@ import android.widget.Button;
 public class ManageGoodsFragment extends Fragment {
     Button btnAdd;
     Button btnSelect;
-    Button btnMymap;
+
     Button btnOther;
     Button btnSell;
     Button btnSellHistory;
     Button btnSeeCost;
     Button btnSeeOther;
+    Button btnGetAllLess;
     public ManageGoodsFragment() {
 
     }
@@ -34,12 +35,13 @@ public class ManageGoodsFragment extends Fragment {
         super.onActivityCreated(savedInstanceState);
         btnAdd=(Button)getActivity().findViewById(R.id.btnAdd);
         btnSelect=(Button)getActivity().findViewById(R.id.btnSelect);
-        btnMymap=(Button)getActivity().findViewById(R.id.btnMymap);
+
         btnSell=(Button)getActivity().findViewById(R.id.btnSell);
         btnOther=(Button)getActivity().findViewById(R.id.btnOther);
         btnSellHistory=(Button)getActivity().findViewById(R.id.btnSellHistory);
         btnSeeCost=(Button)getActivity().findViewById(R.id.btnSeeCost);
         btnSeeOther=(Button)getActivity().findViewById(R.id.btnSeeOther);
+        btnGetAllLess=(Button)getActivity().findViewById(R.id.btnGetAllLess);
         btnAdd.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -56,14 +58,7 @@ public class ManageGoodsFragment extends Fragment {
                 startActivity(intent);
             }
         });
-        btnMymap.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent=new Intent();
-                intent.setClass(getActivity(), MyMapActivity.class);
-                startActivity(intent);
-            }
-        });
+
         btnSell.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -101,6 +96,14 @@ public class ManageGoodsFragment extends Fragment {
             public void onClick(View v) {
                 Intent intent=new Intent();
                 intent.setClass(getActivity(), SeeOtherActivity.class);
+                startActivity(intent);
+            }
+        });
+        btnGetAllLess.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent=new Intent();
+                intent.setClass(getActivity(), GetAllLessActivity.class);
                 startActivity(intent);
             }
         });

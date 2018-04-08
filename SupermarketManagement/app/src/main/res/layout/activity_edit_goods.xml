@@ -4,13 +4,13 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:weightSum="1"
-    android:background="@drawable/main">
+    android:background="@drawable/zengjia">
 
     <LinearLayout
         android:orientation="horizontal"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/colorAccent"
+        android:background="#00000000"
         android:layout_weight="0.1">
 
         <TextView
@@ -34,7 +34,7 @@
         android:orientation="horizontal"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/colorPrimary"
+        android:background="#00000000"
         android:layout_weight="0.1">
 
         <TextView
@@ -53,11 +53,12 @@
             android:background="@drawable/shape"/>
 
     </LinearLayout>
+
     <LinearLayout
         android:orientation="horizontal"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/colorAccent"
+        android:background="#00000000"
         android:layout_weight="0.1">
 
         <TextView
@@ -80,7 +81,7 @@
         android:orientation="horizontal"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/colorPrimary"
+        android:background="#00000000"
         android:layout_weight="0.1">
         <TextView
             android:text="类别"
@@ -99,7 +100,7 @@
         android:orientation="horizontal"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/colorAccent"
+        android:background="#00000000"
         android:layout_weight="0.3">
 
         <TextView
@@ -121,6 +122,29 @@
     <LinearLayout
         android:orientation="horizontal"
         android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#00000000"
+        android:layout_weight="0.1">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="商品进价"
+            android:layout_weight="3"/>
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:inputType="textPersonName"
+            android:ems="10"
+            android:id="@+id/etPrice2"
+            android:layout_weight="1"
+            android:background="@drawable/shape"/>
+
+    </LinearLayout>
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content">
     <Button
         android:text="修改货物"
@@ -128,13 +152,13 @@
         android:layout_height="match_parent"
         android:id="@+id/btnEditGoods"
         android:layout_weight="1"
-        android:background="@drawable/cab_background_top_mainbar" />
+        android:background="@color/colorAccent" />
         <Button
             android:text="删除货物"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:id="@+id/btnDeleteGoods"
             android:layout_weight="1"
-            android:background="@drawable/cab_background_top_mainbar" />
+            android:background="@color/colorAccent" />
     </LinearLayout>
 </LinearLayout>

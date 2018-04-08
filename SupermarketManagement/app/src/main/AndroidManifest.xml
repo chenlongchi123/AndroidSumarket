@@ -70,7 +70,12 @@
         <activity android:name=".OtherCostActivity" />
         <activity android:name=".SellHistoryActivity" />
         <activity android:name=".SeeCostActivity" />
-        <activity android:name=".SeeOtherActivity"></activity>
+        <activity android:name=".SeeOtherActivity" />
+        <activity android:name=".GetAllLessActivity" />
+        <activity
+            android:name=".MingXiActivity"
+            android:label="@string/title_activity_ming_xi"
+            android:theme="@style/AppTheme"></activity>
     </application>
 
 </manifest>

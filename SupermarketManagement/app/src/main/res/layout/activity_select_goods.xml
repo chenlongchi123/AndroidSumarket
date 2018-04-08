@@ -4,10 +4,12 @@
     android:id="@+id/activity_select_goods"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.chen.supermarketmanagement.SelectGoodsActivity">
+    tools:context="com.chen.supermarketmanagement.SelectGoodsActivity"
+    android:background="@drawable/zengjia">
 
     <ListView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:id="@+id/lvSelectGoods"/>
+        android:id="@+id/lvSelectGoods"
+        android:background="#00000000"/>
 </RelativeLayout>

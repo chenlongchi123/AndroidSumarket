@@ -156,6 +156,8 @@ public class SelectGoodsActivity extends AppCompatActivity {
                                             goods.setType(pullParser.nextText());
                                         }else if("description".equals(nodeName)){
                                             goods.setDescription(pullParser.nextText());
+                                        }else if("price2".equals(nodeName)){
+                                            goods.setPrice2(Double.parseDouble(pullParser.nextText().trim()));
                                         }
                                         break;
                                     //结束节点
@@ -236,6 +238,7 @@ public class SelectGoodsActivity extends AppCompatActivity {
                         row.put("type", "类型:"+goods1.getType() );
                         row.put("description","描述:"+goods1.getDescription());
                         row.put("id","id:"+goods1.getId());
+                        row.put("price2", "进价:"+goods1.getPrice2() );
                         data.add(row);
                     }
                     adapter.notifyDataSetChanged();

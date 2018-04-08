@@ -4,53 +4,53 @@
     android:layout_height="match_parent">
 
     <LinearLayout
-        android:orientation="horizontal"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_weight="1">
-    <LinearLayout
         android:orientation="vertical"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_weight="0.95">
+        android:layout_weight="1">
 
         <TextView
 
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textAppearance="?android:attr/textAppearanceLarge"
-            android:id="@+id/tvCsprice"
-            android:text="总收入金额：" />
+            android:id="@+id/tvName"
+            android:text="货物名称" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textAppearance="?android:attr/textAppearanceSmall"
-            android:text="出售货物总进价："
-            android:id="@+id/tvJjprice" />
+            android:text="价格：1234"
+            android:id="@+id/tvPrice" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textAppearance="?android:attr/textAppearanceSmall"
-            android:text="其他总支出："
-            android:id="@+id/tvHfprice" />
+            android:text="数量：15"
+            android:id="@+id/tvNum" />
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textAppearance="?android:attr/textAppearanceSmall"
-            android:text="盈利"
-            android:id="@+id/tvProfit" />
+            android:text="Id：15"
+            android:id="@+id/tvId" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:text="货物类型：日用百货"
+            android:id="@+id/tvType" />
 
     </LinearLayout>
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textAppearance="?android:attr/textAppearanceSmall"
-            android:text="点击查看明细"
-            android:id="@+id/tvDetell"
-            android:layout_weight="0.05"
-            android:textColor="@android:color/holo_red_dark"
-            android:layout_marginTop="@dimen/activity_horizontal_margin" />
-</LinearLayout>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/btnCheck"
+        android:layout_weight="0.1"
+        android:layout_marginTop="15dp"
+        android:text="缺货"
+        android:textColor="@android:color/holo_red_dark" />
 </LinearLayout>

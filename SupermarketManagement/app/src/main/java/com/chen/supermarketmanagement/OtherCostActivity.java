@@ -48,8 +48,11 @@ public class OtherCostActivity extends AppCompatActivity {
         setContentView(R.layout.activity_other_cost);
         time = (TextView)findViewById(R.id.time);
         btnAddCost=(Button)findViewById(R.id.btnAddCost);
+        btnAddCost.getBackground().setAlpha(230);//0~255透明度值
         etUse=(EditText)findViewById(R.id.etUse);
+        etUse.getBackground().setAlpha(100);//0~255透明度值
         etMoney=(EditText)findViewById(R.id.etMoney);
+        etMoney.getBackground().setAlpha(100);//0~255透明度值
         //获取当前日期
         Date now = new Date();
         SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");

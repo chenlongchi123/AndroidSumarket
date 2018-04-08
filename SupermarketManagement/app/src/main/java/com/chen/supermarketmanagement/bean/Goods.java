@@ -9,6 +9,16 @@ public class Goods {
     private String type;
     private String imgurl;
     private String odate;
+    private double price2;
+
+    public double getPrice2() {
+        return price2;
+    }
+
+    public void setPrice2(double price2) {
+        this.price2 = price2;
+    }
+
     public String getOdate() {
         return odate;
     }
